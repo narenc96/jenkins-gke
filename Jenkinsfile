@@ -1,28 +1,28 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = "jenkins-project-328308"
-        CLUSTER_NAME = "k8s-cluster"
-        LOCATION = "us-central1-c"
+        PROJECT_ID = "jenkins-gke-267"
+        CLUSTER_NAME = "jenkins-gke-cluster"
+        LOCATION = "us-central1-a"
         CREDENTIALS_ID = 'jenkins-project'
     }
     stages {
         stage('pull from github repo'){
             steps{
-                git "https://github.com/Bukunmitanimonure/buksapp-UI.git"
+                git "https://github.com/narenc96/jenkins-gke.git"
             }
         }
         stage('build docker image'){
             steps{
-                sh "docker build -t bukunmi00/buksapp-frontend:${env.BUILD_ID} ."                
+                sh "docker build -t narenc96/buksapp-frontend:${env.BUILD_ID} ."                
             }
         }
         stage('push docker image to dockerhub'){
             steps{
                 withCredentials([string(credentialsId: 'DOCKER_PASS', variable: 'docker_pass')]) {
-                    sh "docker login -u bukunmi00 -p ${docker_pass}"
+                    sh "docker login -u narenc267 -p ${docker_pass}"
                 }
-                sh "docker push bukunmi00/buksapp-frontend:${env.BUILD_ID}"
+                sh "docker push narenc96/buksapp-frontend:${env.BUILD_ID}"
             }
             
         }
