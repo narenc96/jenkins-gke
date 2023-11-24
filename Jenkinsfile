@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECT_ID = "jenkins-gke-267"
         CLUSTER_NAME = "jenkins-gke-cluster"
-        LOCATION = "us-central1-a"
+        LOCATION = "us-central1"
         CREDENTIALS_ID = '73eb42fa-6eae-4eb1-8402-83948dd827f7'
     }
     stages {
