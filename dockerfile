@@ -1,4 +1,4 @@
-FROM node:15.12.0 AS builder
+FROM --platform=linux/amd64 node:15.12.0 AS builder
 ENV NODE_ENV production
 # Add a work directory
 WORKDIR /app
