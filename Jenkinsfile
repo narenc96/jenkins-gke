@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('pull from github repo'){
             steps{
-                git "https://github.com/narenc96/jenkins-gke.git"
+                git branch: 'main', credentialsId: '846a8a13-2a2c-40bf-9e6d-11448617ab3c', url: 'https://github.com/narenc96/jenkins-gke.git'
             }
         }
         stage('build docker image'){
