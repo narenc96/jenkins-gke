@@ -11,7 +11,7 @@ COPY . .
 # Build the app
 RUN npm run build
 # Bundle static assets with nginx
-FROM nginx:1.21.0-alpine as production
+FROM --platform=linux/amd64 nginx:1.21.0-alpine as production
 ENV NODE_ENV production
 # Copy built assets from builder
 COPY --from=builder /app/build /usr/share/nginx/html
