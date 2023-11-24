@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: buksapp-ui
-          image: bukunmi00/buksapp-frontend:tagversion
+          image: narenc267/buksapp-frontend:tagversion
           imagePullPolicy: Always
           ports:
           - containerPort: 80
