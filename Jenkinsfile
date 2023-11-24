@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ID = "jenkins-gke-267"
         CLUSTER_NAME = "jenkins-gke-cluster"
         LOCATION = "us-central1-a"
-        CREDENTIALS_ID = 'jenkins-gke-267'
+        CREDENTIALS_ID = '73eb42fa-6eae-4eb1-8402-83948dd827f7'
     }
     stages {
         stage('pull from github repo'){
