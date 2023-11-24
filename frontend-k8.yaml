@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buksapp-ui
+  labels:
+    app: buksapp-ui
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: buksapp-ui
+      
+  template:
+    metadata:
+      labels:
+        app: buksapp-ui
+        tier: buksapp-ui
+    spec:
+      containers:
+        - name: buksapp-ui
+          image: bukunmi00/buksapp-frontend:tagversion
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+            name: buksapp-ui
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: buksapp-ui
+  labels:
+    app: buksapp-ui
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: buksapp-ui
+    tier: buksapp-ui
+  type: LoadBalancer
