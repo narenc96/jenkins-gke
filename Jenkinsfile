@@ -28,7 +28,7 @@ pipeline {
         }
         stage('deploy on k8 cluster'){
             steps{
-                sh "sed -i 's/tagversion/${env.BUILD_ID}/g' frontend-k8.yaml"
+                sh "sed -i 's/narenc267/buksapp-frontend:${env.BUILD_ID}/g' frontend-k8.yaml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'frontend-k8.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])   
             }
         }
