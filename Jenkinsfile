@@ -14,7 +14,7 @@ pipeline {
         }
         stage('build docker image'){
             steps{
-                sh "docker build -t narenc96/buksapp-frontend:${env.BUILD_ID} ."                
+                sh "docker build -t buksapp-frontend:${env.BUILD_ID} ."                
             }
         }
         stage('push docker image to dockerhub'){
@@ -22,7 +22,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'DOCKER_PASS', variable: 'docker_pass')]) {
                     sh "docker login -u narenc267 -p ${docker_pass}"
                 }
-                sh "docker push narenc96/buksapp-frontend:${env.BUILD_ID}"
+                sh "docker push buksapp-frontend:${env.BUILD_ID}"
             }
             
         }
